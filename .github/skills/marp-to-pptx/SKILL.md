@@ -9,7 +9,7 @@ allowed-tools: Bash(npm:*) Bash(npx:*) Bash(marp:*) Bash(which:*)
 このスキルは [Marp](https://marp.app/) を使って Markdown ファイルを PPTX / PDF / HTML スライドに変換するワークフローを提供する。
 社内テンプレート不要で最速に変換できる点が最大の強み。VS Code でリアルタイムプレビューも可能。
 
-このリポジトリでは [docs/workshop-instructor-guide-marp.md](../../../docs/workshop-instructor-guide-marp.md) が Marp スライドの本体であり、テーマは [docs/themes/microsoft-theme.css](../../../docs/themes/microsoft-theme.css) を使用する。
+このリポジトリでは 指定がない場合、テーマは [docs/themes/microsoft-theme.css](../../../docs/themes/microsoft-theme.css) を使用する。
 
 ## 前提条件
 
