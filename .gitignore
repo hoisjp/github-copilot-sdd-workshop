@@ -9,3 +9,7 @@ work/*
 ## Marp export output (generated on demand, not committed by default)
 *.pptx
 *.pdf
+
+## Instructor-only working notes (context handoff from research-archive planning repo)
+## Not distributed to workshop participants.
+internal-notes/
