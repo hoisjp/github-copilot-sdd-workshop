@@ -16,7 +16,7 @@
 - [ ] **VS Code** — 最新版がインストールされていること。
 - [ ] **GitHub Copilot 拡張機能** — VS Code にインストール済みであること（拡張機能 ID: `GitHub.copilot`。Chat 拡張は自動的に同時インストールされます）。
 - [ ] **本リポジトリのクローン** — ワークショップ開始前にローカルへクローンし、VS Code で開いていること（リポジトリの**ルートフォルダ**を開くこと。サブフォルダを開くと後述のカスタムエージェントが認識されません）。
-- [ ] **動作確認** — VS Code 右下に Copilot アイコンが表示され、チャット（`Ctrl+Alt+I` / Mac: `Ctrl+Cmd+I`）が開くこと。
+- [ ] **動作確認** — VS Code 右下に Copilot アイコンが表示され、チャット（`Ctrl+Cmd+I` / Windows: `Ctrl+Alt+I`）が開くこと。
 - [ ] **カスタムエージェントの認識確認** — チャット入力欄に `@` と入力し、候補に `sdd-requirements` / `sdd-design` / `sdd-wireframe` が表示されること。表示されない場合はリポジトリのルートフォルダで VS Code を開き直してください。
 
 > 企業ネットワーク環境ではプロキシ・ファイアウォールの設定確認も事前に行ってください。
@@ -27,8 +27,8 @@
 
 | 操作 | ショートカット |
 |---|---|
-| サイドバーチャット | `Ctrl+Alt+I`（Mac: `Ctrl+Cmd+I`） |
-| インラインチャット | `Ctrl+I`（Mac: `Cmd+I`） |
+| サイドバーチャット | `Ctrl+Cmd+I`（Windows: `Ctrl+Alt+I`） |
+| インラインチャット | `Cmd+I`（Windows: `Ctrl+I`） |
 
 ### 3 つのモード
 
@@ -66,6 +66,21 @@ Copilot への回答品質は「何を見せるか」で決まります。
 | **Agent** | `.github/agents/*.agent.md` | `@agent名` で明示的に呼び出す役割特化のエージェント |
 
 本リポジトリの `.github/agents/` には、ハンズオンで使う 3 つのエージェントが定義されています。
+また、Instruction と Skill について
+
+### Instruction / Skill / Agent を自分で作る
+
+Instruction・Skill・Agent を新しく作りたいときは、Markdown ファイルをゼロから書き始めない。チャット入力欄で組み込みの生成コマンドを使うと、AI が対話的に質問しながら YAML frontmatter や本文の叩き台を自動生成してくれる。
+
+| コマンド | 生成されるもの |
+|---|---|
+| `/create-agent` | カスタムエージェント（`*.agent.md`） |
+| `/create-skill` | Skill（`SKILL.md`） |
+| `/create-instruction` | 特定のルール・規約用の Instruction ファイル（`*.instructions.md`） |
+
+- コマンドの後ろに「作りたいものの説明」を書くだけでよい（例: `/create-agent コードレビュー専用のエージェントが欲しい`）。
+- 生成された内容はそのまま使わず、必ず内容を読んで自分たちのリポジトリに合うように手直しする。
+- 本ワークショップの `sdd-requirements` / `sdd-design` / `sdd-wireframe` も、まずは `/create-agent` で叩き台を作ってから内容を調整する、という作り方ができる。
 
 ## 5. エージェントの呼び出し方（チャットへの入力方法）
 
@@ -126,7 +141,7 @@ Copilot への回答品質は「何を見せるか」で決まります。
    ```
 
 2. 生成された `work/wireframe.html` を開いて確認する。確認方法の例:
-   - VS Code のエクスプローラーで `work/wireframe.html` を右クリック →「Reveal in Finder」（Windows の場合は「Reveal in File Explorer」）→ 表示された Finder/エクスプローラーでファイルをダブルクリックし、既定のブラウザで開く。
+   - VS Code のエクスプローラーで `work/wireframe.html` を右クリック →「Reveal in File Explorer」（Mac の場合は「Reveal in Finder」）→ 表示された Finder/エクスプローラーでファイルをダブルクリックし、既定のブラウザで開く。
    - または、コマンドパレット（`Cmd+Shift+P` / `Ctrl+Shift+P`）で `Simple Browser: Show` を実行し、ファイルパスを入力する。
 
 ## 7. トラブルシューティング
