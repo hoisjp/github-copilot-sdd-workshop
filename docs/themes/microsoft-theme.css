@@ -1,0 +1,207 @@
+/* @theme microsoft-theme */
+
+/* ==============================================
+   Slide canvas
+   ============================================== */
+section {
+  width: 1280px;
+  height: 720px;
+  padding: 40px 60px;
+  background-color: #ffffff;
+  color: #000000;
+  font-family: "Segoe UI", "Yu Gothic UI", "Yu Gothic", sans-serif;
+  font-size: 22px;
+  box-sizing: border-box;
+}
+
+/* ==============================================
+   Pagination  (requires attr(data-marpit-pagination))
+   ============================================== */
+section::after {
+  content: attr(data-marpit-pagination);
+  position: absolute;
+  bottom: 20px;
+  right: 30px;
+  font-size: 18px;
+  color: #888888;
+}
+
+/* ==============================================
+   Headings
+   ============================================== */
+h1 {
+  font-size: 38px;
+  font-weight: bold;
+  color: #1f497d;
+  border-bottom: 3px solid #4f81bd;
+  padding-bottom: 6px;
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+h2 {
+  font-size: 30px;
+  font-weight: bold;
+  color: #1f497d;
+  border-left: 6px solid #4f81bd;
+  padding-left: 14px;
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+h3 {
+  font-size: 22px;
+  font-weight: bold;
+  color: #4f81bd;
+  margin-bottom: 8px;
+}
+
+/* ==============================================
+   Body
+   ============================================== */
+p {
+  font-size: 18px;
+  line-height: 1.5;
+  margin: 0.3em 0;
+}
+
+ul,
+ol {
+  padding-left: 1.4em;
+  margin: 0.3em 0;
+}
+
+li {
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+li::marker {
+  color: #4f81bd;
+}
+
+a {
+  color: #4f81bd;
+  text-decoration: none;
+}
+
+/* ==============================================
+   Table
+   ============================================== */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 17px;
+  margin-top: 8px;
+}
+
+th {
+  background-color: #1f497d;
+  color: #ffffff;
+  font-weight: bold;
+  text-align: left;
+  padding: 8px 12px;
+}
+
+td {
+  border: 1px solid #c0c0c0;
+  padding: 7px 12px;
+}
+
+tr:nth-child(even) td {
+  background-color: #eeece1;
+}
+
+/* ==============================================
+   Code
+   ============================================== */
+code {
+  background-color: #f4f4f4;
+  color: #c0504d;
+  font-family: "Consolas", "Courier New", monospace;
+  font-size: 0.85em;
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+pre {
+  background-color: #f4f4f4;
+  border-left: 4px solid #4f81bd;
+  border-radius: 4px;
+  padding: 10px 14px;
+  font-size: 16px;
+  overflow: auto;
+}
+
+pre code {
+  background: none;
+  color: #000000;
+  font-size: inherit;
+  padding: 0;
+}
+
+/* ==============================================
+   Blockquote
+   ============================================== */
+blockquote {
+  border-left: 4px solid #4bacc6;
+  margin-left: 0;
+  padding-left: 16px;
+  color: #555555;
+  font-style: italic;
+}
+
+/* ==============================================
+   Class: title   <!-- _class: title -->
+   Dark navy title slide
+   ============================================== */
+section.title {
+  background-color: #1f497d;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+section.title h1 {
+  color: #ffffff;
+  border-bottom-color: #4bacc6;
+  font-size: 48px;
+}
+
+section.title h2 {
+  color: #eeece1;
+  border-left: none;
+  padding-left: 0;
+  font-size: 28px;
+  font-weight: normal;
+}
+
+section.title p {
+  color: #eeece1;
+  font-size: 22px;
+}
+
+section.title::after {
+  display: none;
+}
+
+/* ==============================================
+   Class: section   <!-- _class: section -->
+   Blue section-break slide
+   ============================================== */
+section.section {
+  background-color: #4f81bd;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+section.section h1,
+section.section h2 {
+  color: #ffffff;
+  border: none;
+  padding-left: 0;
+  font-size: 42px;
+}

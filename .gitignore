@@ -1,0 +1,11 @@
+## Hands-on scratch output (participant-generated artifacts)
+work/*
+!work/.gitkeep
+
+## OS / editor
+.DS_Store
+*.swp
+
+## Marp export output (generated on demand, not committed by default)
+*.pptx
+*.pdf
