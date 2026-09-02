@@ -18,22 +18,23 @@ description: ワイヤーフレーム（app/）を Azure Static Web Apps へ継�
 ## 入力
 
 - 前段の `sdd-wireframe` が生成した `app/` 配下のアプリ一式（例: `#file:app/index.html`）
+- ワークフローの雛形となる `samples/azure-static-web-apps.sample.yml`
 - 必要に応じて `sdd-design` が生成した `design.md`（例: `#file:work/design.md`）
 
 ## 進め方
 
 1. `app/` の構成を確認する。エントリポイントが `app/index.html` であること、画像などが相対パスで正しく参照されていることを確かめる。`app/index.html` が存在しない場合は、先に `sdd-wireframe` でワイヤーフレームを生成するよう案内し、ダミーの HTML を勝手に作らない。
 2. `app/staticwebapp.config.json` がなければ作成する（`navigationFallback` で `/index.html` にフォールバックさせ、画像・CSS・JS は exclude する）。
-2. ビルドが必要かを判定する。`package.json` が無く HTML / CSS / JavaScript がそのまま動く構成であれば、ビルドをスキップする設定（`skip_app_build: true`、`output_location: ""`）を採用する。
-3. `.github/workflows/azure-static-web-apps.yml` を作成する。以下を必ず満たすこと。
+3. ビルドが必要かを判定する。`package.json` が無く HTML / CSS / JavaScript がそのまま動く構成であれば、ビルドをスキップする設定（`skip_app_build: true`、`output_location: ""`）を採用する。
+4. `.github/workflows/azure-static-web-apps.yml` を作成する。`samples/azure-static-web-apps.sample.yml` を土台として読み込み、ゼロから書かない。サンプル先頭の参照専用を示すコメント 2 行は取り除く。以下を必ず満たすこと。
    - `Azure/static-web-apps-deploy@v1` を使用する。
    - `app_location` は `app` を指定する。
    - `on.push.paths` に `app/**` とワークフロー自身のパスを指定し、`app/` 配下に変更があったときだけデプロイが動くようにする。
    - `main` ブランチへの push を本番デプロイのトリガとする。
    - プルリクエストの `opened` / `synchronize` / `reopened` でステージング環境へデプロイし、`closed` でステージング環境を破棄する。
-4. Azure 側のリソースを準備する手順を提示する。`az staticwebapp create` でリソースを作成し、`az staticwebapp secrets list` でデプロイトークンを取得する。
-5. 取得したデプロイトークンを GitHub リポジトリのシークレット `AZURE_STATIC_WEB_APPS_API_TOKEN` に登録する手順を提示する。
-6. `app/` とワークフローをコミットして push し、GitHub Actions の実行結果と公開 URL を確認する。失敗した場合はログを読んで原因を説明する。
+5. Azure 側のリソースを準備する手順を提示する。`az staticwebapp create` でリソースを作成し、`az staticwebapp secrets list` でデプロイトークンを取得する。
+6. 取得したデプロイトークンを GitHub リポジトリのシークレット `AZURE_STATIC_WEB_APPS_API_TOKEN` に登録する手順を提示する。
+7. `app/` とワークフローをコミットして push し、GitHub Actions の実行結果と公開 URL を確認する。失敗した場合はログを読んで原因を説明する。
 
 ## 出力ルール
 

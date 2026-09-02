@@ -11,9 +11,9 @@ GitHub Copilot の基本操作から、簡略化した SDD（Spec Driven Develop
 | [docs/participant-guide.md](docs/participant-guide.md) | 参加者が手元で参照する詳細手順ガイド |
 | [docs/themes/microsoft-theme.css](docs/themes/microsoft-theme.css) | 講師投影用スライドの Marp テーマ |
 | `.github/agents/` | ハンズオンで使う 4 つのカスタムエージェント（`sdd-requirements` / `sdd-design` / `sdd-wireframe` / `sdd-pipeline`） |
-| `.github/workflows/azure-static-web-apps.yml` | `app/` の変更を Azure Static Web Apps へデプロイする GitHub Actions ワークフロー |
 | `.github/copilot-instructions.md` | 本リポジトリ用の最小限の Copilot instruction |
 | [samples/meeting-notes-sample.md](samples/meeting-notes-sample.md) | ハンズオン用のサンプル議事録（すぐ試せる題材） |
+| [samples/azure-static-web-apps.sample.yml](samples/azure-static-web-apps.sample.yml) | `sdd-pipeline` がワークフローを生成する際の雛形（参照専用。ここにある間は実行されない） |
 | `work/` | 要件一覧・設計書など、ハンズオン中に参加者が生成する中間成果物の置き場（Git 管理対象外） |
 | `app/` | Azure Static Web Apps へデプロイする静的アプリの置き場（Git 管理対象。初期状態では存在せず、`sdd-wireframe` が `index.html` を生成した時点で作られる） |
 

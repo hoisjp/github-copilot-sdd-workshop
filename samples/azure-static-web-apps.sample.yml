@@ -1,3 +1,5 @@
+# 参照専用のサンプルです。この場所にある間は GitHub Actions として実行されません。
+# sdd-pipeline エージェントがこれを土台に .github/workflows/azure-static-web-apps.yml を生成します。
 name: Azure Static Web Apps CI/CD
 
 on:
