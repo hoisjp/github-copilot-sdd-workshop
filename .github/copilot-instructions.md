@@ -18,10 +18,12 @@ GitHub Copilot の基本操作と、簡略化した SDD（Spec Driven Developmen
 | 雑な要望・議事録から要件一覧を作りたい | `sdd-requirements` |
 | 要件一覧から設計書（仕様書）を作りたい | `sdd-design` |
 | 設計書から画面のワイヤーフレームを作りたい | `sdd-wireframe` |
+| ワイヤーフレームを Azure にデプロイする CI/CD を作りたい | `sdd-pipeline` |
 
 ## 成果物の保存先
 
-- ハンズオンで生成した成果物（`requirements.md` / `design.md` / ワイヤーフレーム HTML など）は `work/` 配下に保存する。
+- 要件一覧（`requirements.md`）と設計書（`design.md`）は `work/` 配下に保存する（Git 管理対象外）。
+- ワイヤーフレームなどデプロイ対象の静的アプリは `app/` 配下に保存する。`app/` は Git 管理対象で、変更されると GitHub Actions が Azure Static Web Apps へのデプロイを実行する。
 - `samples/` 配下のファイルは参照専用。上書き・変更しない。
 
 ## 参照ドキュメント

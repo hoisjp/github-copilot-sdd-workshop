@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 260" font-family="'Segoe UI', system-ui, sans-serif">
+  <!-- Background -->
+  <rect width="560" height="260" fill="#ffffff" rx="4"/>
+
+  <!-- Grid lines -->
+  <line x1="60" y1="20" x2="60" y2="200" stroke="#edebe9" stroke-width="1"/>
+  <line x1="60" y1="200" x2="540" y2="200" stroke="#edebe9" stroke-width="1"/>
+  <!-- Horizontal grid -->
+  <line x1="60" y1="50"  x2="540" y2="50"  stroke="#edebe9" stroke-width="1" stroke-dasharray="4,3"/>
+  <line x1="60" y1="87"  x2="540" y2="87"  stroke="#edebe9" stroke-width="1" stroke-dasharray="4,3"/>
+  <line x1="60" y1="125" x2="540" y2="125" stroke="#edebe9" stroke-width="1" stroke-dasharray="4,3"/>
+  <line x1="60" y1="162" x2="540" y2="162" stroke="#edebe9" stroke-width="1" stroke-dasharray="4,3"/>
+
+  <!-- Y-axis labels -->
+  <text x="52" y="204" fill="#605e5c" font-size="11" text-anchor="end">0</text>
+  <text x="52" y="166" fill="#605e5c" font-size="11" text-anchor="end">25</text>
+  <text x="52" y="129" fill="#605e5c" font-size="11" text-anchor="end">50</text>
+  <text x="52" y="91"  fill="#605e5c" font-size="11" text-anchor="end">75</text>
+  <text x="52" y="54"  fill="#605e5c" font-size="11" text-anchor="end">100</text>
+
+  <!-- X-axis labels (7 days: Mon-Sun) -->
+  <!-- X positions: 60 + n*(480/6) = 60,140,220,300,380,460,540 -->
+  <text x="60"  y="218" fill="#605e5c" font-size="11" text-anchor="middle">6/26(木)</text>
+  <text x="140" y="218" fill="#605e5c" font-size="11" text-anchor="middle">6/27(金)</text>
+  <text x="220" y="218" fill="#605e5c" font-size="11" text-anchor="middle">6/28(土)</text>
+  <text x="300" y="218" fill="#605e5c" font-size="11" text-anchor="middle">6/29(日)</text>
+  <text x="380" y="218" fill="#605e5c" font-size="11" text-anchor="middle">6/30(月)</text>
+  <text x="460" y="218" fill="#605e5c" font-size="11" text-anchor="middle">7/1(火)</text>
+  <text x="540" y="218" fill="#605e5c" font-size="11" text-anchor="middle">7/2(水)</text>
+
+  <!-- Y-axis title -->
+  <text x="14" y="115" fill="#605e5c" font-size="11" text-anchor="middle" transform="rotate(-90,14,115)">投稿数（件）</text>
+
+  <!-- X line data (blue): 30,45,92,38,55,62,48 -->
+  <!-- Y = 200 - (value/100 * 150) -->
+  <!-- 30→155, 45→132.5, 92→62, 38→143, 55→117.5, 62→107, 48→128 -->
+  <polyline
+    points="60,155 140,132 220,62 300,143 380,118 460,107 540,128"
+    fill="none" stroke="#0078d4" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <!-- Dots for X line -->
+  <circle cx="60"  cy="155" r="4" fill="#0078d4"/>
+  <circle cx="140" cy="132" r="4" fill="#0078d4"/>
+  <circle cx="220" cy="62"  r="4" fill="#0078d4" stroke="#fff" stroke-width="2"/>
+  <circle cx="300" cy="143" r="4" fill="#0078d4"/>
+  <circle cx="380" cy="118" r="4" fill="#0078d4"/>
+  <circle cx="460" cy="107" r="4" fill="#0078d4"/>
+  <circle cx="540" cy="128" r="4" fill="#0078d4"/>
+
+  <!-- Instagram line data (pink): 18,22,65,20,30,35,28 -->
+  <!-- 18→173, 22→167, 65→102.5, 20→170, 30→155, 35→147.5, 28→158 -->
+  <polyline
+    points="60,173 140,167 220,103 300,170 380,155 460,148 540,158"
+    fill="none" stroke="#e1306c" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="6,3"/>
+  <!-- Dots for Instagram line -->
+  <circle cx="60"  cy="173" r="4" fill="#e1306c"/>
+  <circle cx="140" cy="167" r="4" fill="#e1306c"/>
+  <circle cx="220" cy="103" r="4" fill="#e1306c" stroke="#fff" stroke-width="2"/>
+  <circle cx="300" cy="170" r="4" fill="#e1306c"/>
+  <circle cx="380" cy="155" r="4" fill="#e1306c"/>
+  <circle cx="460" cy="148" r="4" fill="#e1306c"/>
+  <circle cx="540" cy="158" r="4" fill="#e1306c"/>
+
+  <!-- Spike annotation (6/28) -->
+  <line x1="220" y1="25" x2="220" y2="60" stroke="#d83b01" stroke-width="1" stroke-dasharray="3,2"/>
+  <rect x="176" y="10" width="88" height="18" rx="3" fill="#fed9cc"/>
+  <text x="220" y="23" fill="#d83b01" font-size="10" text-anchor="middle" font-weight="600">⚠ 炎上検知アラート</text>
+
+  <!-- Legend -->
+  <rect x="300" y="235" width="110" height="20" rx="2" fill="#f3f2f1"/>
+  <line x1="308" y1="245" x2="324" y2="245" stroke="#0078d4" stroke-width="2.5"/>
+  <circle cx="316" cy="245" r="3.5" fill="#0078d4"/>
+  <text x="328" y="249" fill="#323130" font-size="11">X（旧Twitter）</text>
+
+  <rect x="416" y="235" width="120" height="20" rx="2" fill="#f3f2f1"/>
+  <line x1="424" y1="245" x2="440" y2="245" stroke="#e1306c" stroke-width="2.5" stroke-dasharray="5,3"/>
+  <circle cx="432" cy="245" r="3.5" fill="#e1306c"/>
+  <text x="444" y="249" fill="#323130" font-size="11">Instagram</text>
+</svg>

@@ -7,7 +7,7 @@ GitHub Copilot の基本操作から、簡略化した SDD（Spec Driven Develop
 - GitHub Copilot の画面操作・コンテキストの与え方・Instruction / Skill / Agent の仕組みを体験する。
 - お客様の雑な要望から、いきなり実装に入るのではなく、段階的にアウトプットを育てる進め方（簡略化 SDD ライフサイクル）を体験する。
   - ライフサイクル: `ヒアリング（議事録） → 要件定義書 → 設計書 → ワイヤーフレーム`
-  - 各ステップを専用のカスタムエージェント（`sdd-requirements` / `sdd-design` / `sdd-wireframe`）に分担させる。
+  - 各ステップを専用のカスタムエージェント（`sdd-requirements` / `sdd-design` / `sdd-wireframe` / `sdd-pipeline`）に分担させる。
 - 総時間: 180 分 = コンテンツ 160 分 + 休憩 20 分（10 分 × 2）。
 
 ## 2. 全体アジェンダ（サマリー）
@@ -59,7 +59,7 @@ GitHub Copilot の基本操作から、簡略化した SDD（Spec Driven Develop
 
 - Skill（`SKILL.md`、`description` による自動マッチ）の仕組みと構成例。
 - Agent（`.agent.md`、`@agent名` で明示呼び出し、`tools:` 制限）の仕組みと Skill との違い。
-- この後のハンズオンで使う `sdd-` プレフィックス付きエージェント（`sdd-requirements` / `sdd-design` / `sdd-wireframe`）の役割を紹介。
+- この後のハンズオンで使う `sdd-` プレフィックス付きエージェント（`sdd-requirements` / `sdd-design` / `sdd-wireframe` / `sdd-pipeline`）の役割を紹介。
 
 ### 5. 簡略化 SDD ライフサイクルの考え方（15 min）
 
@@ -121,7 +121,8 @@ GitHub Copilot の基本操作から、簡略化した SDD（Spec Driven Develop
 |---|---|---|---|
 | `sdd-requirements` | ヒアリング内容から要件一覧を作成し、複数ロールの壁打ちで抜け漏れを洗い出す | 議事録ファイル or 雑な要望 | `work/requirements.md` |
 | `sdd-design` | 要件一覧から設計書（仕様書）を作成 | `work/requirements.md` | `work/design.md` |
-| `sdd-wireframe` | 設計書から画面のワイヤーフレーム（HTML）を作成 | `work/design.md` | `work/wireframe.html` |
+| `sdd-wireframe` | 設計書から画面のワイヤーフレーム（HTML）を作成 | `work/design.md` | `app/index.html` |
+| `sdd-pipeline` | `app/` を Azure Static Web Apps へデプロイする CI/CD を作成 | `app/index.html` | `.github/workflows/azure-static-web-apps.yml` |
 
 ## 5. 前提条件（事前準備）
 

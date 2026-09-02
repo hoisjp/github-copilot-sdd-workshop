@@ -1,0 +1,7 @@
+{
+  "recommendations": [
+    "ms-vscode.vscode-node-azure-pack",
+    "ms-vscode.azurecli",
+    "marp-team.marp-vscode"
+  ]
+}
