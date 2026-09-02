@@ -4,7 +4,7 @@
 # To make this agent available, merge this file into the default repository branch.
 # For format details, see: https://gh.io/customagents/config
 
-name: sdd-requirements
+name: sdd-1-requirements
 description: 雑な要望や議事録から要件一覧（requirements.md）を作成するエージェント。簡略化 SDD ライフサイクルの第 1 ステップ。
 ---
 

@@ -4,7 +4,7 @@
 # To make this agent available, merge this file into the default repository branch.
 # For format details, see: https://gh.io/customagents/config
 
-name: sdd-pipeline
+name: sdd-4-pipeline
 description: ワイヤーフレーム（app/）を Azure Static Web Apps へ継続的にデプロイする GitHub Actions の CI/CD パイプラインを構築するエージェント。簡略化 SDD ライフサイクルの第 4 ステップ。
 ---
 
@@ -17,13 +17,13 @@ description: ワイヤーフレーム（app/）を Azure Static Web Apps へ継�
 
 ## 入力
 
-- 前段の `sdd-wireframe` が生成した `app/` 配下のアプリ一式（例: `#file:app/index.html`）
+- 前段の `sdd-3-wireframe` が生成した `app/` 配下のアプリ一式（例: `#file:app/index.html`）
 - ワークフローの雛形となる `samples/azure-static-web-apps.sample.yml`
-- 必要に応じて `sdd-design` が生成した `design.md`（例: `#file:work/design.md`）
+- 必要に応じて `sdd-2-design` が生成した `design.md`（例: `#file:work/design.md`）
 
 ## 進め方
 
-1. `app/` の構成を確認する。エントリポイントが `app/index.html` であること、画像などが相対パスで正しく参照されていることを確かめる。`app/index.html` が存在しない場合は、先に `sdd-wireframe` でワイヤーフレームを生成するよう案内し、ダミーの HTML を勝手に作らない。
+1. `app/` の構成を確認する。エントリポイントが `app/index.html` であること、画像などが相対パスで正しく参照されていることを確かめる。`app/index.html` が存在しない場合は、先に `sdd-3-wireframe` でワイヤーフレームを生成するよう案内し、ダミーの HTML を勝手に作らない。
 2. `app/staticwebapp.config.json` がなければ作成する（`navigationFallback` で `/index.html` にフォールバックさせ、画像・CSS・JS は exclude する）。
 3. ビルドが必要かを判定する。`package.json` が無く HTML / CSS / JavaScript がそのまま動く構成であれば、ビルドをスキップする設定（`skip_app_build: true`、`output_location: ""`）を採用する。
 4. `.github/workflows/azure-static-web-apps.yml` を作成する。`samples/azure-static-web-apps.sample.yml` を土台として読み込み、ゼロから書かない。サンプル先頭の参照専用を示すコメント 2 行は取り除く。以下を必ず満たすこと。

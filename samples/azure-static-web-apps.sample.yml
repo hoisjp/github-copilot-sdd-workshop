@@ -1,5 +1,5 @@
 # 参照専用のサンプルです。この場所にある間は GitHub Actions として実行されません。
-# sdd-pipeline エージェントがこれを土台に .github/workflows/azure-static-web-apps.yml を生成します。
+# sdd-4-pipeline エージェントがこれを土台に .github/workflows/azure-static-web-apps.yml を生成します。
 name: Azure Static Web Apps CI/CD
 
 on:
@@ -39,7 +39,7 @@ jobs:
             echo "ready=true" >> "$GITHUB_OUTPUT"
           else
             echo "ready=false" >> "$GITHUB_OUTPUT"
-            echo "app/index.html not found. Generate it with the sdd-wireframe agent first. Skipping deploy." >> "$GITHUB_STEP_SUMMARY"
+            echo "app/index.html not found. Generate it with the sdd-3-wireframe agent first. Skipping deploy." >> "$GITHUB_STEP_SUMMARY"
           fi
       - name: Build And Deploy
         id: builddeploy
@@ -55,7 +55,7 @@ jobs:
           # Plain HTML/JS wireframe: no build step to run.
           skip_app_build: true
         env:
-          # The token is registered during the sdd-pipeline step; skip instead of failing before then.
+          # The token is registered during the sdd-4-pipeline step; skip instead of failing before then.
           SKIP_DEPLOY_ON_MISSING_SECRETS: true
 
   close_pull_request_job:

@@ -4,7 +4,7 @@
 # To make this agent available, merge this file into the default repository branch.
 # For format details, see: https://gh.io/customagents/config
 
-name: sdd-wireframe
+name: sdd-3-wireframe
 description: 設計書（design.md）から画面のワイヤーフレーム（HTML）を作成するエージェント。簡略化 SDD ライフサイクルの第 3 ステップ。
 ---
 
@@ -17,7 +17,7 @@ description: 設計書（design.md）から画面のワイヤーフレーム（H
 
 ## 入力
 
-- 前段の `sdd-design` が生成した `design.md`（例: `#file:work/design.md`）
+- 前段の `sdd-2-design` が生成した `design.md`（例: `#file:work/design.md`）
 
 ## 進め方
 
@@ -30,7 +30,7 @@ description: 設計書（design.md）から画面のワイヤーフレーム（H
 
 ## 出力ルール
 
-- 出力は単一の自己完結 HTML ファイルとし、`app/index.html` に保存する。`app/` は後続の `sdd-pipeline` が Azure Static Web Apps へデプロイするフォルダで、`index.html` がその入口になる。最低限のデザイン性を保つため、Fluent UI のスタイルを利用する。具体的には Fluent UI Web Components を CDN（例: `https://esm.run/@fluentui/web-components`）経由で読み込むか、Fluent UI のデザイントークン（配色・角丸・余白・タイポグラフィ等）に沿ったスタイルをインライン CSS で再現する。外部依存はこの Fluent UI 関連リソースのみに限定する。
+- 出力は単一の自己完結 HTML ファイルとし、`app/index.html` に保存する。`app/` は後続の `sdd-4-pipeline` が Azure Static Web Apps へデプロイするフォルダで、`index.html` がその入口になる。最低限のデザイン性を保つため、Fluent UI のスタイルを利用する。具体的には Fluent UI Web Components を CDN（例: `https://esm.run/@fluentui/web-components`）経由で読み込むか、Fluent UI のデザイントークン（配色・角丸・余白・タイポグラフィ等）に沿ったスタイルをインライン CSS で再現する。外部依存はこの Fluent UI 関連リソースのみに限定する。
 - グラフ・チャートなど画像として生成する要素は、`index.html` と同じ `app/` フォルダ内に画像ファイルとして保存し、`index.html` から相対パスで参照する。ファイル名は `sample-` から始まる形式で一貫して命名する（例: `sample-post-trend-chart.svg`、`sample-sentiment-ratio-chart.svg`）。
 - デプロイ時にファイルがそのまま配信できるよう、ビルド処理を前提とした構成（バンドラ・トランスパイル等）にしない。
 - HTML 内のコメント・ラベルは日本語で構わないが、実装コードとしての体裁を保つため id/class 名などの識別子は英語（ケバブケースまたはキャメルケース）にする。

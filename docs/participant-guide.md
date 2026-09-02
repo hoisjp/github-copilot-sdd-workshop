@@ -5,7 +5,7 @@
 ## 0. このワークショップについて
 
 - GitHub Copilot の基本操作を学んだ上で、「雑な要望 → 要件定義書 → 設計書 → ワイヤーフレーム → デプロイ」という簡略化した SDD（Spec Driven Development）ライフサイクルをハンズオンで体験します。
-- 各ステップは専用のカスタムエージェント（`sdd-requirements` / `sdd-design` / `sdd-wireframe` / `sdd-pipeline`）が担当します。
+- 各ステップは専用のカスタムエージェント（`sdd-1-requirements` / `sdd-2-design` / `sdd-3-wireframe` / `sdd-4-pipeline`）が担当します。
 - 全体の時間割（2.5 時間 / 休憩 10 分 × 1 回）は [workshop-timetable.md](workshop-timetable.md) を参照してください。
 
 ## 1. 事前準備チェックリスト
@@ -15,15 +15,32 @@
 - [ ] **Git** — バージョン管理ツールがインストールされていること。
 - [ ] **VS Code** — 最新版がインストールされていること。
 - [ ] **GitHub Copilot 拡張機能** — VS Code にインストール済みであること（拡張機能 ID: `GitHub.copilot`。Chat 拡張は自動的に同時インストールされます）。
-- [ ] **本リポジトリのクローン** — ワークショップ開始前にローカルへクローンし、VS Code で開いていること（リポジトリの**ルートフォルダ**を開くこと。サブフォルダを開くと後述のカスタムエージェントが認識されません）。
+- [ ] **本リポジトリの fork とクローン** — 本リポジトリを自分の GitHub アカウントに fork し、その fork をローカルへクローンして VS Code で開いていること（リポジトリの**ルートフォルダ**を開くこと。サブフォルダを開くと後述のカスタムエージェントが認識されません）。手順は次の「リポジトリを fork してクローンする」を参照してください。
 - [ ] **動作確認** — VS Code 右下に Copilot アイコンが表示され、チャット（`Ctrl+Cmd+I` / Windows: `Ctrl+Alt+I`）が開くこと。
-- [ ] **カスタムエージェントの認識確認** — チャット入力欄に `@` と入力し、候補に `sdd-requirements` / `sdd-design` / `sdd-wireframe` / `sdd-pipeline` が表示されること。表示されない場合はリポジトリのルートフォルダで VS Code を開き直してください。
+- [ ] **カスタムエージェントの認識確認** — チャット入力欄に `@` と入力し、候補に `sdd-1-requirements` / `sdd-2-design` / `sdd-3-wireframe` / `sdd-4-pipeline` が表示されること。表示されない場合はリポジトリのルートフォルダで VS Code を開き直してください。
 
 > 企業ネットワーク環境ではプロキシ・ファイアウォールの設定確認も事前に行ってください。
 
+### リポジトリを fork してクローンする
+
+ステップ 4 では、生成したアプリを自分のリポジトリへ push して GitHub Actions を動かします。講師のリポジトリには直接 push できないため、**fork（自分のアカウントへのコピー）を作ってから**クローンしてください。
+
+1. ブラウザで本リポジトリのページを開き、右上の **Fork** をクリックする。
+2. Owner が自分のアカウントになっていることを確認し、**Create fork** をクリックする。
+3. 作成された自分の fork のページで **Code** をクリックし、HTTPS の URL をコピーする。
+4. ターミナルで任意の作業フォルダに移動し、クローンする。
+
+   ```
+   git clone https://github.com/<自分のアカウント名>/github-copilot-sdd-workshop.git
+   cd github-copilot-sdd-workshop
+   ```
+
+5. VS Code でクローンしたフォルダを開く（ターミナルで `code .`、またはメニューの「File」→「Open Folder」）。
+6. 開いたフォルダがリポジトリのルートであることを確認する（エクスプローラーに `docs/`、`samples/`、`README.md` が並んでいれば OK）。
+
 ### Azure 環境（任意）
 
-ステップ 4（`sdd-pipeline`）を手元で実施する場合のみ、次の準備を行ってください。
+ステップ 4（`sdd-4-pipeline`）を手元で実施する場合のみ、次の準備を行ってください。
 
 - [ ] **Azure アカウント** — Azure にサインインできる Microsoft アカウントまたは組織アカウントを用意すること。
 - [ ] **Azure サブスクリプション** — デプロイ先となる有効なサブスクリプションと、リソースを作成するために必要な権限が付与されていること。
@@ -96,27 +113,27 @@ Instruction・Skill・Agent を新しく作りたいときは、Markdown ファ�
 
 - コマンドの後ろに「作りたいものの説明」を書くだけでよい（例: `/create-agent コードレビュー専用のエージェントが欲しい`）。
 - 生成された内容はそのまま使わず、必ず内容を読んで自分たちのリポジトリに合うように手直しする。
-- 本ワークショップの `sdd-requirements` / `sdd-design` / `sdd-wireframe` / `sdd-pipeline` も、まずは `/create-agent` で叩き台を作ってから内容を調整する、という作り方ができる。
+- 本ワークショップの `sdd-1-requirements` / `sdd-2-design` / `sdd-3-wireframe` / `sdd-4-pipeline` も、まずは `/create-agent` で叩き台を作ってから内容を調整する、という作り方ができる。
 
 ## 5. エージェントの呼び出し方（チャットへの入力方法）
 
-カスタムエージェント（`sdd-requirements` / `sdd-design` / `sdd-wireframe` / `sdd-pipeline`）は、チャット入力欄から次の 2 通りの方法で呼び出せます。
+カスタムエージェント（`sdd-1-requirements` / `sdd-2-design` / `sdd-3-wireframe` / `sdd-4-pipeline`）は、チャット入力欄から次の 2 通りの方法で呼び出せます。
 
 ### 方法 1: `@エージェント名` を先頭に入力する（本ガイドではこちらを使用）
 
 チャット入力欄にそのまま `@` に続けてエージェント名を入力し、続けて依頼内容や `#file:` によるファイル参照を書きます。
 
 ```
-@sdd-requirements #file:samples/meeting-notes-sample.md をもとに要件一覧を作成してください。
+@sdd-1-requirements #file:samples/meeting-notes-sample.md をもとに要件一覧を作成してください。
 ```
 
-- `@` を入力すると候補一覧が表示されるので、そこから `sdd-requirements` などを選ぶと入力ミスを防げます。
+- `@` を入力すると候補一覧が表示されるので、そこから `sdd-1-requirements` などを選ぶと入力ミスを防げます。
 - 1 つのメッセージ内で完結し、モードを元に戻す必要はありません。
 
 ### 方法 2: モード選択ドロップダウンからエージェントに切り替える
 
 1. チャット入力欄の下部にある、現在のモード（既定では「Agent」）を表示しているドロップダウンをクリックする。
-2. 一覧から `sdd-requirements` などのエージェント名を選択する。
+2. 一覧から `sdd-1-requirements` などのエージェント名を選択する。
 3. 選択後は、以降に送信するメッセージがすべてそのエージェントとして実行される（`@エージェント名` を毎回入力する必要はない）。
 4. 別のエージェントや通常の Agent モードに戻したい場合は、同じドロップダウンから選び直す。
 
@@ -162,36 +179,36 @@ Instruction・Skill・Agent を新しく作りたいときは、Markdown ファ�
 - 以降のステップでは `#file:samples/meeting-notes-sample.md` の部分を、自分のファイルパス（例: `#file:work/meeting-notes.md`）に読み替えてください。
 - ⚠️ 社外秘・個人情報を含む議事録を扱う場合は、所属組織のデータ取り扱いルールに従ってください。判断に迷う場合はサンプルを使ってください。
 
-### ステップ 1: 要件一覧を作る（`sdd-requirements`）
+### ステップ 1: 要件一覧を作る（`sdd-1-requirements`）
 
-1. VS Code のチャットを開く（モードは何でもよい。「5. エージェントの呼び出し方」の方法 1 のとおり、`@sdd-requirements` と入力すれば自動的にそのエージェントとして実行される）。
+1. VS Code のチャットを開く（モードは何でもよい。「5. エージェントの呼び出し方」の方法 1 のとおり、`@sdd-1-requirements` と入力すれば自動的にそのエージェントとして実行される）。
 2. サンプル議事録を渡して要件一覧の作成を依頼する。
 
    ```
-   @sdd-requirements #file:samples/meeting-notes-sample.md をもとに要件一覧を作成してください。
+   @sdd-1-requirements #file:samples/meeting-notes-sample.md をもとに要件一覧を作成してください。
    ```
 
 3. 生成された `work/requirements.md` を確認する。運用・開発・営業の視点で抜け漏れがないか、Copilot とのやり取りで深掘りしてみる。
-4. （任意・時間に余裕があれば）自分たちの会社の要望に置き換えて、自由記述でも試してみる（例: `@sdd-requirements 我が社でも問い合わせ対応を自動化したい`）。
+4. （任意・時間に余裕があれば）自分たちの会社の要望に置き換えて、自由記述でも試してみる（例: `@sdd-1-requirements 我が社でも問い合わせ対応を自動化したい`）。
 
    > ⚠️ この自由記述の例を試すと `work/requirements.md` が上書きされます（上書き確認が出た場合は内容をよく確認してから回答してください）。ステップ 2・3 で使う `requirements.md` を残しておきたい場合は、**ステップ 3 まで完了させてから**試すか、保存先ファイル名を変えるよう Copilot に依頼してください。
 
-### ステップ 2: 設計書を作る（`sdd-design`）
+### ステップ 2: 設計書を作る（`sdd-2-design`）
 
 1. ステップ 1 で作成した `work/requirements.md` を入力にする。
 
    ```
-   @sdd-design #file:work/requirements.md をもとに設計書を作成してください。
+   @sdd-2-design #file:work/requirements.md をもとに設計書を作成してください。
    ```
 
 2. 生成された `work/design.md` を確認する。要件のどの項目が設計のどの部分に対応しているか、対応関係を意識して読む。
 
-### ステップ 3: ワイヤーフレームを作る（`sdd-wireframe`）
+### ステップ 3: ワイヤーフレームを作る（`sdd-3-wireframe`）
 
 1. ステップ 2 で作成した `work/design.md` を入力にする。
 
    ```
-   @sdd-wireframe #file:work/design.md をもとにワイヤーフレーム（HTML）を生成してください。
+   @sdd-3-wireframe #file:work/design.md をもとにワイヤーフレーム（HTML）を生成してください。
    ```
 
 2. 生成された `app/index.html` を開いて確認する。確認方法の例:
@@ -200,14 +217,14 @@ Instruction・Skill・Agent を新しく作りたいときは、Markdown ファ�
 
    > `work/` は Git 管理対象外ですが、`app/` は Git 管理対象です。デプロイするアプリは GitHub に push される必要があるため、ワイヤーフレームだけは `app/` に保存します。
 
-### ステップ 4: Azure への CI/CD を作る（`sdd-pipeline`）
+### ステップ 4: Azure への CI/CD を作る（`sdd-4-pipeline`）
 
 > このステップは講師のデモを中心に進めます。「1. 事前準備チェックリスト」の Azure 環境の準備が完了している方は手元でも実施してください。Azure 環境がない方は、手順 1・2 まで（ワークフローの生成と読み解き）を行い、以降はデモをご覧ください。
 
 1. ステップ 3 で作成した `app/` を入力にする。
 
    ```
-   @sdd-pipeline #file:app/index.html を Azure Static Web Apps にデプロイする CI/CD パイプラインを作成してください。
+   @sdd-4-pipeline #file:app/index.html を Azure Static Web Apps にデプロイする CI/CD パイプラインを作成してください。
    ```
 
 2. 生成された `.github/workflows/azure-static-web-apps.yml` を確認する。`app/**` に変更があったときだけデプロイが走る設定になっていることを読み取る。
@@ -215,17 +232,22 @@ Instruction・Skill・Agent を新しく作りたいときは、Markdown ファ�
 
    > ⚠️ デプロイトークンはパスワードと同等の機密情報です。ファイルに書き込んだり、チャットに貼ったりしないでください。
 
-4. `app/` とワークフローをコミットして push し、GitHub の Actions タブでデプロイが成功することを確認する。
-5. 公開された URL をブラウザで開き、ワイヤーフレームが表示されることを確認する。
-6. （任意）`app/index.html` を少し編集して push し、自動で再デプロイされることを確かめる。
+4. `app/` とワークフローをコミットし、自分の fork に push する。
+5. GitHub で自分の fork を開き、「Actions」タブに移動する。fork では GitHub Actions が既定で無効なため、初回のみ **I understand my workflows, go ahead and enable them** を押して有効化する。
+6. デプロイのワークフローが成功することを確認する。
+7. 公開された URL をブラウザで開き、ワイヤーフレームが表示されることを確認する。
+8. （任意）`app/index.html` を少し編集して push し、自動で再デプロイされることを確かめる。
 
 ## 7. トラブルシューティング
 
 | 事象 | 対処 |
 |---|---|
 | Copilot アイコンに警告マークが出る | ライセンスまたはネットワークの問題の可能性。講師に相談してください。 |
-| `@sdd-requirements` などが候補に出てこない | ワークスペースが本リポジトリのルートで開かれているか確認してください（`.github/agents/` を認識させるため）。 |
+| `@sdd-1-requirements` などが候補に出てこない | ワークスペースが本リポジトリのルートで開かれているか確認してください（`.github/agents/` を認識させるため）。 |
 | 生成結果が期待と違う | 一度に完璧を求めず、「ここをもっと詳しく」「〇〇の観点が抜けている」と追加で依頼してみてください。 |
 | `work/` に前回の成果物が残っている | 上書きしてよいか確認しながら進めるか、ファイル名を変えて保存してください。 |
 | push しても GitHub Actions が起動しない | 変更したファイルが `app/` 配下にあるか確認してください。`work/` や `docs/` だけの変更では、ワークフローは意図的に起動しません。 |
+| フォークしたリポジトリで Actions が実行されない | フォーク先では GitHub Actions が既定で無効化されます。リポジトリの「Actions」タブを開き、ワークフローを有効化してください。 |
+| push が `workflow` スコープ不足で拒否される | `.github/workflows/` を含む push には `workflow` 権限が必要です。VS Code のアカウントメニューからサインインし直すか、GitHub CLI 利用時は `gh auth refresh -s workflow` を実行してください。 |
+| push 先を間違えた（講師のリポジトリに push できない） | `git remote -v` で origin が自分の fork になっているか確認してください。違う場合は fork をクローンし直すのが確実です。 |
 | デプロイが失敗する（Deployment Failed） | リポジトリのシークレット `AZURE_STATIC_WEB_APPS_API_TOKEN` が登録されているか、Azure 側でトークンを再生成していないかを確認してください。 |

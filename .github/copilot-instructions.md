@@ -15,10 +15,10 @@ GitHub Copilot の基本操作と、簡略化した SDD（Spec Driven Developmen
 
 | 依頼内容 | 使うエージェント |
 |---|---|
-| 雑な要望・議事録から要件一覧を作りたい | `sdd-requirements` |
-| 要件一覧から設計書（仕様書）を作りたい | `sdd-design` |
-| 設計書から画面のワイヤーフレームを作りたい | `sdd-wireframe` |
-| ワイヤーフレームを Azure にデプロイする CI/CD を作りたい | `sdd-pipeline` |
+| 雑な要望・議事録から要件一覧を作りたい | `sdd-1-requirements` |
+| 要件一覧から設計書（仕様書）を作りたい | `sdd-2-design` |
+| 設計書から画面のワイヤーフレームを作りたい | `sdd-3-wireframe` |
+| ワイヤーフレームを Azure にデプロイする CI/CD を作りたい | `sdd-4-pipeline` |
 
 ## 成果物の保存先
 

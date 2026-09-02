@@ -143,10 +143,10 @@ Plan モード：
 
 ### 本日使う 4 エージェント（`.github/agents/`）
 
-- `sdd-requirements` — ヒアリング → 要件一覧
-- `sdd-design` — 要件一覧 → 設計書
-- `sdd-wireframe` — 設計書 → ワイヤーフレーム（`app/index.html`）
-- `sdd-pipeline` — `app/` → Azure Static Web Apps への CI/CD
+- `sdd-1-requirements` — ヒアリング → 要件一覧
+- `sdd-2-design` — 要件一覧 → 設計書
+- `sdd-3-wireframe` — 設計書 → ワイヤーフレーム（`app/index.html`）
+- `sdd-4-pipeline` — `app/` → Azure Static Web Apps への CI/CD
 
 ---
 
@@ -155,13 +155,13 @@ Plan モード：
 ### ① チャット入力欄で `@エージェント名` と入力する（本日はこちら中心）
 
 ```
-@sdd-requirements #file:samples/meeting-notes-sample.md をもとに要件一覧を作成してください。
+@sdd-1-requirements #file:samples/meeting-notes-sample.md をもとに要件一覧を作成してください。
 ```
 
 ### ② モード選択ドロップダウンから選ぶ
 
 1. チャット入力欄下部の「Agent」等と表示されたモード選択ドロップダウンをクリック。
-2. 一覧から `sdd-requirements` などのエージェント名を選択（以降のメッセージはそのエージェントとして実行される）。
+2. 一覧から `sdd-1-requirements` などのエージェント名を選択（以降のメッセージはそのエージェントとして実行される）。
 3. 通常どおりプロンプトを入力して送信。
 
 <!-- デモ: ①の @ 入力と②のドロップダウン選択、両方を見せる -->
@@ -197,22 +197,22 @@ Plan モード：
 ## デモコマンド一覧
 
 ```
-@sdd-requirements #file:samples/meeting-notes-sample.md
+@sdd-1-requirements #file:samples/meeting-notes-sample.md
 をもとに要件一覧を作成してください。
 ```
 
 ```
-@sdd-design #file:work/requirements.md
+@sdd-2-design #file:work/requirements.md
 をもとに設計書を作成してください。
 ```
 
 ```
-@sdd-wireframe #file:work/design.md
+@sdd-3-wireframe #file:work/design.md
 をもとにワイヤーフレーム（HTML）を生成してください。
 ```
 
 ```
-@sdd-pipeline #file:app/index.html
+@sdd-4-pipeline #file:app/index.html
 を Azure Static Web Apps にデプロイする CI/CD パイプラインを作成してください。
 ```
 

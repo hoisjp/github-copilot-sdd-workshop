@@ -4,7 +4,7 @@
 # To make this agent available, merge this file into the default repository branch.
 # For format details, see: https://gh.io/customagents/config
 
-name: sdd-design
+name: sdd-2-design
 description: 要件一覧（requirements.md）から設計書（design.md）を作成するエージェント。簡略化 SDD ライフサイクルの第 2 ステップ。
 ---
 
@@ -17,7 +17,7 @@ description: 要件一覧（requirements.md）から設計書（design.md）を�
 
 ## 入力
 
-- 前段の `sdd-requirements` が生成した `requirements.md`（例: `#file:work/requirements.md`）
+- 前段の `sdd-1-requirements` が生成した `requirements.md`（例: `#file:work/requirements.md`）
 
 ## 進め方
 
