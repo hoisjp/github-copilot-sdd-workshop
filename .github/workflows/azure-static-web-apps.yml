@@ -41,6 +41,9 @@ jobs:
           output_location: ""
           # Plain HTML/JS wireframe: no build step to run.
           skip_app_build: true
+        env:
+          # The token is registered during the sdd-pipeline step; skip instead of failing before then.
+          SKIP_DEPLOY_ON_MISSING_SECRETS: true
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'

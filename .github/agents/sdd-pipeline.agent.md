@@ -22,7 +22,7 @@ description: ワイヤーフレーム（app/）を Azure Static Web Apps へ継�
 
 ## 進め方
 
-1. `app/` の構成を確認する。エントリポイントが `app/index.html` であること、画像などが相対パスで正しく参照されていること、`app/staticwebapp.config.json` があることを確かめる。
+1. `app/` の構成を確認する。エントリポイントが `app/index.html` であること、画像などが相対パスで正しく参照されていること、`app/staticwebapp.config.json` があることを確かめる。`app/index.html` が存在しない場合は、先に `sdd-wireframe` でワイヤーフレームを生成するよう案内し、ダミーの HTML を勝手に作らない。
 2. ビルドが必要かを判定する。`package.json` が無く HTML / CSS / JavaScript がそのまま動く構成であれば、ビルドをスキップする設定（`skip_app_build: true`、`output_location: ""`）を採用する。
 3. `.github/workflows/azure-static-web-apps.yml` を作成する。以下を必ず満たすこと。
    - `Azure/static-web-apps-deploy@v1` を使用する。

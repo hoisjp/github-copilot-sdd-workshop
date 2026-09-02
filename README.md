@@ -15,7 +15,7 @@ GitHub Copilot の基本操作から、簡略化した SDD（Spec Driven Develop
 | `.github/copilot-instructions.md` | 本リポジトリ用の最小限の Copilot instruction |
 | [samples/meeting-notes-sample.md](samples/meeting-notes-sample.md) | ハンズオン用のサンプル議事録（すぐ試せる題材） |
 | `work/` | 要件一覧・設計書など、ハンズオン中に参加者が生成する中間成果物の置き場（Git 管理対象外） |
-| `app/` | Azure Static Web Apps へデプロイする静的アプリ（Git 管理対象。変更するとデプロイが走る） |
+| `app/` | Azure Static Web Apps へデプロイする静的アプリの置き場（Git 管理対象。初期状態はデプロイ設定のみで、`sdd-wireframe` が `index.html` を生成する） |
 
 ## 当日の進め方（概要）
 
