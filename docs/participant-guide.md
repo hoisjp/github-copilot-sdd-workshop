@@ -193,6 +193,7 @@ Instruction・Skill・Agent を新しく作りたいときは、Markdown ファ�
    ```
    @sdd-wireframe #file:work/design.md をもとにワイヤーフレーム（HTML）を生成してください。
    ```
+
 2. 生成された `app/index.html` を開いて確認する。確認方法の例:
    - VS Code のエクスプローラーで `app/index.html` を右クリック →「Reveal in File Explorer」（Mac の場合は「Reveal in Finder」）→ 表示された Finder/エクスプローラーでファイルをダブルクリックし、既定のブラウザで開く。
    - または、コマンドパレット（`Cmd+Shift+P` / `Ctrl+Shift+P`）で `Simple Browser: Show` を実行し、ファイルパスを入力する。
@@ -226,3 +227,5 @@ Instruction・Skill・Agent を新しく作りたいときは、Markdown ファ�
 | `@sdd-requirements` などが候補に出てこない | ワークスペースが本リポジトリのルートで開かれているか確認してください（`.github/agents/` を認識させるため）。 |
 | 生成結果が期待と違う | 一度に完璧を求めず、「ここをもっと詳しく」「〇〇の観点が抜けている」と追加で依頼してみてください。 |
 | `work/` に前回の成果物が残っている | 上書きしてよいか確認しながら進めるか、ファイル名を変えて保存してください。 |
+| push しても GitHub Actions が起動しない | 変更したファイルが `app/` 配下にあるか確認してください。`work/` や `docs/` だけの変更では、ワークフローは意図的に起動しません。 |
+| デプロイが失敗する（Deployment Failed） | リポジトリのシークレット `AZURE_STATIC_WEB_APPS_API_TOKEN` が登録されているか、Azure 側でトークンを再生成していないかを確認してください。 |
