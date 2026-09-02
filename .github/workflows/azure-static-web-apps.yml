@@ -29,8 +29,19 @@ jobs:
         with:
           submodules: false
           lfs: false
+      # app/ is empty until a participant generates a wireframe, and SWA fails without an entry point.
+      - name: Check for app entry point
+        id: appcheck
+        run: |
+          if [ -f app/index.html ]; then
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "app/index.html not found. Generate it with the sdd-wireframe agent first. Skipping deploy." >> "$GITHUB_STEP_SUMMARY"
+          fi
       - name: Build And Deploy
         id: builddeploy
+        if: steps.appcheck.outputs.ready == 'true'
         uses: Azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
